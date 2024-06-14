@@ -1,0 +1,54 @@
+.movie-list{
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(240, 230, 230);
+    flex-flow: wrap;
+    padding: 10px;
+    gap: 10px;
+    align-content: center;
+    justify-content: center;
+}
+
+#LoadMore{
+    padding : 25px;
+
+}
+
+#search{
+    padding : 10px;
+    background-color: rgb(255, 255, 255);
+    width: 700px;
+    margin: 10px;
+    justify-content: center;
+    text-align: center;
+}
+
+#clear{
+    padding : 10px;
+    background-color: rgb(7, 7, 7);
+}
+
+.search-bar{
+
+    background-color: #282c34;
+}
+
+.sort{
+    display:flex;
+    background-color: rgb(255, 255, 255);
+    width: 200px;
+    height:30px;
+    justify-content: center;
+    text-align: center;
+
+
+
+}
+
+.sort-button{
+
+    background-color: #282c34;
+    height: 30px;
+    padding:10px;
+
+}

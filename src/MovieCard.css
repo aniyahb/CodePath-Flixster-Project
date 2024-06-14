@@ -1,0 +1,57 @@
+.movie-card{
+    background-color: rgb(14, 14, 14);
+    display: flex;
+    flex-direction: column;
+    padding:  10px;
+    margin: 10px;
+    border-radius: 20px;
+    width: 400px;
+    align-items: center;
+    color: white;
+}
+
+.movie-card:hover{
+    background-color: rgb(64, 60, 61);
+    transform: scale(1.02);
+
+}
+
+.image{
+    height: 550px;
+    width: 400px;
+    border-radius: 10px;
+    flex-flow: wrap;
+
+
+}
+
+.fav_watched_icons{
+    display: flex;
+    font-size: 25px;
+    gap:5px;
+    justify-content:space-between;
+    padding: 10px;
+
+
+
+}
+.fa-solid {
+    color:red;
+}
+
+.pWatched {
+    font-size: 30px;
+    margin-right: 10px;
+}
+
+.watched{
+    position:relative;
+    left:20px;
+    font-size: 29px;
+}
+
+.fav_watched_icons, .pWatched,.watched{
+    display: inline-block;
+    margin-right: 10px;
+
+}

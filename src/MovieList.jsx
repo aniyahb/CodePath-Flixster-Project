@@ -17,6 +17,7 @@ const MovieList = () => {
   const [url, setUrl] = useState()
 
 
+
   useEffect(() => {
     const options = {
       method: 'GET',
@@ -85,7 +86,10 @@ const MovieList = () => {
   const handleOpen = (movie) => {
     setModalOpen(!modalOpen);
     setPickedMovie(movie);
-  }
+
+
+    }
+
 
   function handleSetMovieId(id){
     let picked = findClickedMovie(data, movieId);
@@ -164,6 +168,6 @@ const MovieList = () => {
 
   );
 
-  }
+    }
 
 export default MovieList;

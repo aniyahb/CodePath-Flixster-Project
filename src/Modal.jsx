@@ -14,6 +14,8 @@ const Modal = (props) => {
             <h3 className="Overview">{props.pickedMovie?.overview}</h3>
             <h3 className= "Genre">{props.pickedMovie?.genre}</h3>
 
+
+
         </div>
 
 

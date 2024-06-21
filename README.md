@@ -21,7 +21,7 @@ Deployed Application (optional): [Flixster Deployed Site][((https://flixster-sta
 - [x] **Accessibility Features**
   - [x] Website implements accessibility features (semantic HTML, color contrast, font sizing, alt text for images).
 - [x] **Responsive Design**
-  - [x ] Website implements responsive web design.
+  - [x] Website implements responsive web design.
 - [x] **Movie Details**
   - [x] Users can view more details about a movie in a popup, such as runtime in minutes, backdrop poster, release date, genres, and/or an overview.
 - [x] **Sorting Options**

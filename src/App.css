@@ -4,10 +4,35 @@
 
 .App-header {
   background-color: #282c34;
+  display: flex;
   align-items: center;
+  justify-content: flex-start;
   color: rgb(246, 242, 242);
-  padding: 5px;
-  font-size: 30px;
-  text-align: center;
+  padding: 20px 30px;
+  gap: 30px;
+}
+
+.App-header-title {
   font-size: 45px;
+  font-weight: bold;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.App-header-search {
+  flex: 1;
+  max-width: 500px;
+}
+
+.App-header-search input {
+  width: 100%;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #f6f2f2;
+}
+
+.App-header-search input::placeholder {
+  color: #999;
 }

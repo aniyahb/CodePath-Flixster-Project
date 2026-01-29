@@ -6,18 +6,17 @@ import MovieCard from './MovieCard.jsx'
 import Modal from './Modal';
 
 
-const MovieList = () => {
+const MovieList = ({ searchQuery }) => {
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
   const [modalOpen, setModalOpen] = useState(false);
   const [movieId, setMovieId] = useState();
   const [pickedMovie, setPickedMovie] = useState(null);
   const [sortBy, setSortBy] = useState('now_playing');
-  const [search, setSearch] = useState("");
   const [url, setUrl] = useState()
+  
 
-
-
+// Fetch Now Playing Movies
   useEffect(() => {
     const options = {
       method: 'GET',
@@ -34,6 +33,28 @@ const MovieList = () => {
 
   }, [page])
 
+  // Handle search when searchQuery prop changes
+  useEffect(() => {
+    if (searchQuery.trim() === "") {
+      setPage(1);
+      return;
+    }
+  const options = {
+      method: 'GET',
+      headers: {
+        accept: 'application/json',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwOGQ3OGMwNGMwY2FjMzU5MWJmNWZlNjdmNzEwMmE0OSIsInN1YiI6IjY2NjdkMTNkOWMwOTk4ZmYzMDFjM2U4ZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.lxCKmIG5jGH82CjvnONg1DussKlgYFSICO6I2PNjwV8'
+      }
+    };
+
+    const searchUrl = `https://api.themoviedb.org/3/search/movie?query=${searchQuery}&include_adult=false&language=en-US&page=1`;
+    
+    fetch(searchUrl, options)
+      .then(response => response.json())
+      .then(response => setData(response.results))
+      .catch(err => console.error(err));
+
+  }, [searchQuery]);
 
   function renderMovieCard(movie, index){
     return (
@@ -57,27 +78,7 @@ const MovieList = () => {
 
   }
 
-  useEffect(() => {
-    const options = {
-      method: 'GET',
-      headers: {
-        accept: 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwOGQ3OGMwNGMwY2FjMzU5MWJmNWZlNjdmNzEwMmE0OSIsInN1YiI6IjY2NjdkMTNkOWMwOTk4ZmYzMDFjM2U4ZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.lxCKmIG5jGH82CjvnONg1DussKlgYFSICO6I2PNjwV8'
-      }
-    };
-
-    fetch(url, options)
-      .then(response => response.json())
-      .then(response => setData(response.results))
-      .catch(err => console.error(err));
-
-  }, [search]);
-
-
-  function handleChange(event) {
-    setSearch(event.target.value);
-    setUrl(`https://api.themoviedb.org/3/search/movie?query=${event.target.value}&include_adult=false&language=en-US&page=1`);
-  }
+  
 
   const handleClose = (e) => {
     setModalOpen(false);
@@ -131,14 +132,7 @@ const MovieList = () => {
 
     <>
       {modalOpen && pickedMovie && <Modal showModal={handleOpen} id={movieId} movies={data} pickedMovie={pickedMovie} />}
-      <div> {/* SEARCH BUTTON */}
-      <form className="search-bar">
-        <input id="search" type="text" value={search} className="search-input" placeholder="Search..." onChange={e => handleChange(e)}/>
-        <button id="clear" className="clear-results">Clear</button>
-      </form>
-
-
-    </div>
+     
 
     <div className="sort-button">
       <select className="sort" id="sort-by" value={sortBy} onChange={e => handleSort(e)} >
@@ -169,5 +163,6 @@ const MovieList = () => {
   );
 
     }
-
+  
 export default MovieList;
+

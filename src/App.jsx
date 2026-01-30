@@ -4,6 +4,8 @@ import { useState } from 'react'
 
 function App() {
   const [searchQuery, setSearchQuery] = useState('')
+   const handleClearSearch = () => {
+    setSearchQuery('')}
 
   return (
     <div className="App">
@@ -16,6 +18,15 @@ function App() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
+          {searchQuery && (
+            <button 
+              className="clear-btn" 
+              onClick={handleClearSearch}
+              aria-label="Clear search"
+            >
+              ✕
+            </button>
+          )}
         </div>
       </header>
       <MovieList searchQuery={searchQuery} />

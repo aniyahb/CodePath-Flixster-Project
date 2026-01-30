@@ -25,7 +25,6 @@ const MovieList = ({ searchQuery }) => {
         Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwOGQ3OGMwNGMwY2FjMzU5MWJmNWZlNjdmNzEwMmE0OSIsInN1YiI6IjY2NjdkMTNkOWMwOTk4ZmYzMDFjM2U4ZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.lxCKmIG5jGH82CjvnONg1DussKlgYFSICO6I2PNjwV8'
       }
     };
-
     fetch(`https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${page}`, options)
       .then(response => response.json())
       .then(response => setData([...data,...response.results]))
@@ -35,17 +34,22 @@ const MovieList = ({ searchQuery }) => {
 
   // Handle search when searchQuery prop changes
   useEffect(() => {
-    if (searchQuery.trim() === "") {
-      setPage(1);
-      return;
-    }
-  const options = {
+    const options = {
       method: 'GET',
       headers: {
         accept: 'application/json',
         Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwOGQ3OGMwNGMwY2FjMzU5MWJmNWZlNjdmNzEwMmE0OSIsInN1YiI6IjY2NjdkMTNkOWMwOTk4ZmYzMDFjM2U4ZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.lxCKmIG5jGH82CjvnONg1DussKlgYFSICO6I2PNjwV8'
       }
     };
+
+    if (searchQuery.trim() === "") {
+      // Fetch now_playing when search is empty
+      fetch(`https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1`, options)
+        .then(response => response.json())
+        .then(response => setData(response.results))
+        .catch(err => console.error(err));
+      return;
+    }
 
     const searchUrl = `https://api.themoviedb.org/3/search/movie?query=${searchQuery}&include_adult=false&language=en-US&page=1`;
     

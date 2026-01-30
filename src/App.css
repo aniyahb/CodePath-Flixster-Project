@@ -20,6 +20,9 @@
 }
 
 .App-header-search {
+  position: relative;
+  display: flex;
+  align-items: center;
   flex: 1;
   max-width: 500px;
 }
@@ -35,4 +38,19 @@
 
 .App-header-search input::placeholder {
   color: #999;
+}
+
+.clear-btn {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #999;
+  padding: 5px 10px;
+}
+
+.clear-btn:hover {
+  color: #333;
 }

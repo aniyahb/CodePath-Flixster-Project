@@ -17,6 +17,12 @@
   font-weight: bold;
   margin: 0;
   white-space: nowrap;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.App-header-title:hover {
+  opacity: 0.8;
 }
 
 .App-header-search {

@@ -67,7 +67,7 @@ const MovieList = ({ searchQuery }) => {
         setPickedMovie={setPickedMovie}
         handleClickFunc={() => handleOpen(movie)}
         key={index}
-        image={"https://image.tmdb.org/t/p/w500"+movie.poster_path}
+        image={"https://image.tmdb.org/t/p/w200"+movie.poster_path}
         title={movie.original_title}
         average={movie.vote_average}
         selectedMovieId={() => handleSetMovieId(movie.id)}

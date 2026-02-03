@@ -5,15 +5,41 @@ const MovieCard = (props) => {
     const [isFav, setIsFav] = useState(false);
     const [isWatched, setIsWatched] = useState(false);
 
+    const rating = Math.round((props.average / 10) * 100); // Convert 0-10 scale to 0-100
+    
+    // Determine circle color based on rating
+    const getCircleColor = () => {
+        if (rating >= 70) return '#00D084'; // Green
+        if (rating >= 40) return '#FFD700'; // Yellow
+        return '#FF6B6B'; // Red
+    };
 
     return (
         <div className="movie-card" onClick={props.handleClickFunc}>
-            <section>
+            <div className="image-container">
                 <img className ="image" src={props.image} />
-                <h2 className = "title"> {props.title} </h2>
-                <h3 className= "average"> {props.average} </h3>
+                {/* Circular rating indicator */}
+                <div className="rating-circle">
+                    <svg viewBox="0 0 100 100" className="progress-svg">
+                        <circle cx="50" cy="50" r="45" className="progress-bg" />
+                        <circle 
+                            cx="50" 
+                            cy="50" 
+                            r="45" 
+                            className="progress-fill"
+                            style={{
+                                strokeDashoffset: 283 - (rating / 100) * 283,
+                                stroke: getCircleColor()
+                            }}
+                        />
+                    </svg>
+                    <div className="rating-text">{rating}%</div>
+                </div>
+            </div>
+            <section>
+                <div className = "title"> {props.title} </div>
 
-                <div className= "fav_watched_icons">
+                {/* <div className= "fav_watched_icons">
                     <a className= "favorite_icon" onClick={(e) => {
                             e.stopPropagation();
                             setIsFav(!isFav);
@@ -25,7 +51,7 @@ const MovieCard = (props) => {
 }
                     </a>
 
-                <p className="pWatched">
+                <div className="pWatched">
                     <span className="watched" onClick={(e) => {e.stopPropagation(); setIsWatched(!isWatched); }}>
 
                     {isWatched ?
@@ -35,8 +61,8 @@ const MovieCard = (props) => {
                     Watched
                     </span>
 
-                </p>
                 </div>
+                </div> */}
             </section>
 
 

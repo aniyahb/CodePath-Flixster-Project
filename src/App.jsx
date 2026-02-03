@@ -4,13 +4,17 @@ import { useState } from 'react'
 
 function App() {
   const [searchQuery, setSearchQuery] = useState('')
-   const handleClearSearch = () => {
+  const handleClearSearch = () => {
     setSearchQuery('')}
+  
+  const handleTitleClick = () => {
+    setSearchQuery('')
+  }
 
   return (
     <div className="App">
       <header className="App-header">
-        <h1 className="App-header-title"> Flixster</h1>
+        <h1 className="App-header-title" onClick={handleTitleClick} style={{ cursor: 'pointer' }}> Flixster</h1>
         <div className="App-header-search">
           <input 
             type="text" 

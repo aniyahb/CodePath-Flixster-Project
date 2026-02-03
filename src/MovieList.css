@@ -1,54 +1,52 @@
-.movie-list{
-    display: flex;
-    flex-direction: row;
-    background-color: rgb(240, 230, 230);
-    flex-flow: wrap;
-    padding: 10px;
-    gap: 10px;
-    align-content: center;
-    justify-content: center;
+.movie-list {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
-#LoadMore{
-    padding : 25px;
-
+.movie-card {
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
-#search{
-    padding : 10px;
-    background-color: rgb(255, 255, 255);
-    width: 700px;
-    margin: 10px;
-    justify-content: center;
-    text-align: center;
+#LoadMore {
+  padding: 25px;
 }
 
-#clear{
-    padding : 10px;
-    background-color: rgb(7, 7, 7);
+#search {
+  padding: 10px;
+  background-color: rgb(255, 255, 255);
+  width: 700px;
+  margin: 10px;
+  justify-content: center;
+  text-align: center;
 }
 
-.search-bar{
-
-    background-color: #282c34;
+#clear {
+  padding: 10px;
+  background-color: rgb(7, 7, 7);
 }
 
-.sort{
-    display:flex;
-    background-color: rgb(255, 255, 255);
-    width: 200px;
-    height:30px;
-    justify-content: center;
-    text-align: center;
-
-
-
+.search-bar {
+  background-color: #282c34;
 }
 
-.sort-button{
+.sort {
+  display: flex;
+  background-color: rgb(255, 255, 255);
+  width: 200px;
+  height: 30px;
+  justify-content: center;
+  text-align: center;
+}
 
-    background-color: #282c34;
-    height: 30px;
-    padding:10px;
-
+.sort-button {
+  background-color: #282c34;
+  height: 30px;
+  padding: 10px;
 }
